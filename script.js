@@ -23,8 +23,9 @@ function getComputerChoice() {
 
 // create getHumanChoice function that will return one of the valid choices depending on what the user inputs
 function getHumanChoice() {
-    // prompt the user fpr a valid input and store the value in userInput variable
-    let userInput = prompt(`Please enter one of the valid choices between: "rock", "paper" or "scissors" `, '');
+    // prompt the user for a valid input and store the value in userInput variable
+    // make it case insensitive calling toLowerCase
+    let userInput = prompt(`Please enter one of the valid choices between: "rock", "paper" or "scissors" `, '').toLowerCase();
     
     // initialize sentry variable for while loop
     let keepGoing = true;
@@ -46,3 +47,8 @@ function getHumanChoice() {
         }
     } 
 }
+
+// Initialize two global variables to keep track of the score
+let humanScore = 0;
+let computerScore = 0;
+

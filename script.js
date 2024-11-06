@@ -20,3 +20,29 @@ function getComputerChoice() {
         return 'scissors';
     }
 }
+
+// create getHumanChoice function that will return one of the valid choices depending on what the user inputs
+function getHumanChoice() {
+    // prompt the user fpr a valid input and store the value in userInput variable
+    let userInput = prompt(`Please enter one of the valid choices between: "rock", "paper" or "scissors" `, '');
+    
+    // initialize sentry variable for while loop
+    let keepGoing = true;
+
+    // while loop till the user enter a valid input
+    while(keepGoing){
+        // stop prompting if Esc is entered
+        if(userInput === null){
+            return;
+        }
+        // check if the user enter one of the valid input. If he doesn't, prompt again for valid input
+        if(userInput !== 'rock' && userInput !== 'paper' && userInput !== 'scissors'){
+            userInput = prompt(`Invalid input. Please enter one of the valid choices between: "rock", "paper" or "scissors". `, '');
+        }
+
+        // if userInput is a valid input, return userInput
+        else{
+            return userInput;
+        }
+    } 
+}

@@ -62,7 +62,7 @@ function playRound(humanChoice, computerChoice) {
     // if human doesn't enter a value
     if (humanChoice === null || humanChoice === undefined)
     {
-        print('Human did not enter a value');
+        alert('Human did not enter a value');
         return;
     }
     // how to play Rock, Paper, Scissors:

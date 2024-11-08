@@ -72,7 +72,8 @@ function playRound(humanChoice, computerChoice) {
     // scissors is "crushed" by rock but "cuts" paper
 
     if(humanChoice === computerChoice){
-        return playRound(humanChoice, computerChoice);
+        alert(`It's a tie! Play again`);
+        return playRound(getHumanChoice(), getComputerChoice());
     }
     // if user beats the computer increment humanScore
     if  ( ((humanChoice === 'rock') && (computerChoice === 'scissors')) 
@@ -87,7 +88,8 @@ function playRound(humanChoice, computerChoice) {
         computerScore++
     }
     // for debugging purpose
-    return humanScore, computerScore;
+    console.log(humanScore, computerScore);
+    return;
 }
 
 

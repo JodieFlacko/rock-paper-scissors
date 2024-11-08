@@ -51,45 +51,66 @@ function getHumanChoice() {
     } 
 }
 
-// initialize two global variables to keep track of the score
+// create function named playGame
+function playGame() {
+
+    // initialize two global variables to keep track of the score
 let humanScore = 0;
 let computerScore = 0;
 
 // create a function named playRound with two parameters: humanChoice and computerChoice
 // the function increments the humanScore or computerScore variable based on the round winner
-function playRound(humanChoice, computerChoice) {
+    function playRound(humanChoice, computerChoice) {
 
-    // if human doesn't enter a value
-    if (humanChoice === null || humanChoice === undefined)
-    {
-        alert('Human did not enter a value');
-        return;
-    }
-    // how to play Rock, Paper, Scissors:
-    // if both players throw th same object, it's a tie. Play again
-    // rock "crushes" scissors, but is "covered" by paper
-    // paper "covers" rock but is "cut" by scissors
-    // scissors is "crushed" by rock but "cuts" paper
-
-    if(humanChoice === computerChoice){
-        alert(`It's a tie! Play again`);
-        return playRound(getHumanChoice(), getComputerChoice());
-    }
-    // if user beats the computer increment humanScore
-    if  ( ((humanChoice === 'rock') && (computerChoice === 'scissors')) 
-        || ((humanChoice === 'paper') && (computerChoice === 'rock')) 
-        || ((humanChoice === 'scissors') && (computerChoice === 'paper')) 
-        )
+        // if human doesn't enter a value
+        if (humanChoice === null || humanChoice === undefined)
         {
-            humanScore++;
+            alert('Human did not enter a value');
+            return;
         }
-    // else the computer wins and computerScore gets incremented
-    else{
-        computerScore++
-    }
-    // for debugging purpose
-    console.log(humanScore, computerScore);
-    return;
-}
+        // how to play Rock, Paper, Scissors:
+        // if both players throw th same object, it's a tie. Play again
+        // rock "crushes" scissors, but is "covered" by paper
+        // paper "covers" rock but is "cut" by scissors
+        // scissors is "crushed" by rock but "cuts" paper
 
+        if(humanChoice === computerChoice){
+            alert(`It's a tie! Play again`);
+            return playRound(getHumanChoice(), getComputerChoice());
+        }
+        // if user beats the computer increment humanScore
+        if  ( ((humanChoice === 'rock') && (computerChoice === 'scissors')) 
+            || ((humanChoice === 'paper') && (computerChoice === 'rock')) 
+            || ((humanChoice === 'scissors') && (computerChoice === 'paper')) 
+            )
+            {
+                humanScore++;
+            }
+        // else the computer wins and computerScore gets incremented
+        else{
+            computerScore++
+        }
+    }
+
+
+    // initialize sentry for while loop
+    let counter = 0;
+    // initialize condition for while loop
+    let keepGoing = true;
+    // use while loop to call playRound 5 times
+    while(keepGoing){
+        playRound(getHumanChoice(), getComputerChoice());
+        // increment counter
+        counter++;
+        if (counter >= 5){
+            keepGoing = false;
+        }
+    }
+    // return the winner and score
+    winner = (humanScore > computerScore) ? 'User' : 'Computer';  
+    console.log(`Score:
+User: ${humanScore}
+Computer: ${computerScore}
+Winner is: ${winner}`);
+}
 

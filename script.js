@@ -35,9 +35,9 @@ function getHumanChoice() {
 
     // while loop till the user enter a valid input
     while(keepGoing){
-        // stop prompting if Esc is entered
-        if(userInput === null){
-            return;
+        // stop prompting if Esc or empty string
+        if(userInput === null || userInput === ''){
+            return userInput;
         }
         // check if the user enter one of the valid input. If he doesn't, prompt again for valid input
         if(userInput !== 'rock' && userInput !== 'paper' && userInput !== 'scissors'){
@@ -62,11 +62,11 @@ let computerScore = 0;
 // the function increments the humanScore or computerScore variable based on the round winner
     function playRound(humanChoice, computerChoice) {
 
-        // if human doesn't enter a value
-        if (humanChoice === null || humanChoice === undefined)
+        // if human doesn't enter a value or presses esc stop game
+        if (humanChoice === null || humanChoice === '')
         {
-            alert('Human did not enter a value');
-            return;
+            alert('Human did not enter a value, stop game');
+            return humanChoice;
         }
         // how to play Rock, Paper, Scissors:
         // if both players throw th same object, it's a tie. Play again
@@ -91,15 +91,18 @@ let computerScore = 0;
             computerScore++
         }
     }
-
-
     // initialize sentry for while loop
     let counter = 0;
     // initialize condition for while loop
     let keepGoing = true;
     // use while loop to call playRound 5 times
     while(keepGoing){
-        playRound(getHumanChoice(), getComputerChoice());
+        //stop game if user enters esc or empty string
+        let signal = playRound(getHumanChoice(), getComputerChoice());
+        if (signal === null || signal === '')
+        {
+            return;
+        }
         // increment counter
         counter++;
         if (counter >= 5){

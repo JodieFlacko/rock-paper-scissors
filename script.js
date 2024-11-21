@@ -74,7 +74,7 @@ let computerScore = 0;
 
         if(humanChoice === computerChoice){
             alert(`It's a tie! Play again`);
-            return playRound(getHumanChoice(), getComputerChoice());
+            return;
         }
         // if user beats the computer increment humanScore
         if  ( ((humanChoice === 'rock') && (computerChoice === 'scissors')) 
@@ -86,8 +86,10 @@ let computerScore = 0;
             }
         // else the computer wins and computerScore gets incremented
         else{
-            computerScore++
+            computerScore++;
+            
         }
+         //display results
     }
 
     // add event listeners to buttons
@@ -95,9 +97,18 @@ let computerScore = 0;
     buttons.forEach((button) => {
         button.addEventListener("click", () => {
             playRound(button.id, getComputerChoice())
+            results.textContent = `User score: ${humanScore}\nComputer score: ${computerScore}`;
+            if (computerScore === 5) {
+                results.textContent = `User score: ${humanScore}\nComputer score: ${computerScore}\nComputer wins!`;
+                }
+            else if (humanScore === 5) {
+                results.textContent = `User score: ${humanScore}\nComputer score: ${computerScore}\nUser wins!`;
+                }
         });
     });
-    
+    let results = document.querySelector("#results");
+
+   
     
     
     

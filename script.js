@@ -51,8 +51,6 @@ function getHumanChoice() {
     } 
 }
 
-// create function named playGame
-function playGame() {
 
     // initialize two global variables to keep track of the score
 let humanScore = 0;
@@ -91,29 +89,46 @@ let computerScore = 0;
             computerScore++
         }
     }
-    // initialize sentry for while loop
+
+    // add event listeners to buttons
+    let buttons = document.querySelectorAll("button");
+    buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+            playRound(button.id, getComputerChoice())
+        });
+    });
+    
+    
+    
+    
+    
+    
+    
+    
+    /* // initialize sentry for while loop
     let counter = 0;
     // initialize condition for while loop
     let keepGoing = true;
     // use while loop to call playRound 5 times
     while(keepGoing){
+        let humanSelection= getHumanChoice();
+        let computerSelection = getComputerChoice();
         //stop game if user enters esc or empty string
-        let signal = playRound(getHumanChoice(), getComputerChoice());
-        if (signal === null || signal === '')
-        {
-            return;
-        }
+        let signal = playRound(humanSelection, computerSelection);
+        if (signal === null || signal === '')   return;
         // increment counter
         counter++;
         if (counter >= 5){
             keepGoing = false;
         }
-    }
-    // return the winner and score
+    } */
+/*     // return the winner and score
     winner = (humanScore > computerScore) ? 'User' : 'Computer';  
     console.log(`Score:
 User: ${humanScore}
 Computer: ${computerScore}
-Winner is: ${winner}`);
-}
+Winner is: ${winner}`); */
+
+
+
 

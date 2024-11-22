@@ -60,7 +60,7 @@ let winner;
         // paper "covers" rock but is "cut" by scissors
         // scissors is "crushed" by rock but "cuts" paper
         if(humanChoice === computerChoice){
-            alert(`It's a tie! Play again`);
+            selections.textContent += "It's a tie! Play again!";
             return;
         }
         // if user beats the computer increment humanScore
